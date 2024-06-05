@@ -25,9 +25,5 @@ For instance, if we have a redirect setup for `/dogs` to `https://www.somesite.c
 ## DELETE
 
 ```bash
- curl --location --request DELETE 'localhost:4747/123' \
---header 'Content-Type: application/json' \
---data '{
-    "path":"123","url":"http://google.com"
-}'
+ curl --location --request DELETE 'localhost:4747/goog'
 ```
