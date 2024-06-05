@@ -11,18 +11,14 @@ import (
 
 func main() {
 
-	store, err := store.Connect()
+	db, err := store.Connect()
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer store.Close()
+	defer db.Close()
 
-	us := urlshort.Service{
-		Store: store,
-	}
+	http.Handle("/", &urlshort.Service{Store: db})
 
-	http.HandleFunc("/", us.Handle)
-
-	fmt.Println("Starting the server on :4747")
+	fmt.Println("--- Starting the server on Port 4747 ---")
 	log.Fatal(http.ListenAndServe(":4747", nil))
 }

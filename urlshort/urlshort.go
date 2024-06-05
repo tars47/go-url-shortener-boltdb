@@ -34,7 +34,7 @@ func (*Service) send(w http.ResponseWriter, res response) {
 	w.Write([]byte(bytes))
 }
 
-func (s *Service) Handle(w http.ResponseWriter, r *http.Request) {
+func (s *Service) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
 		{
